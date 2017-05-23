@@ -57,13 +57,15 @@ class LinkedList(object):
 
     def remove(self, node):
         current = self.head
-        previouscurrent = ''
-        while current.next_node:
-            previouscurrent = current
+        previouscurrent = None
+        while current.next_node is not None:
             if current == node:
-                previouscurrent.data = current.next_node.data
-                previouscurrent.next_node = current.next_node.next_node
-            self.head == current.next_node
+                previouscurrent.next_node = current.next_node
+                return
+            else:
+                previouscurrent = current
+                current = current.next_node
+            
         raise Exception('Node does not exist in Linked List')
 
     def display(self):
@@ -75,6 +77,7 @@ class LinkedList(object):
         output += str(current.data)
         return output
 new = LinkedList([1,2,3])
-new.pop()
-new.push(5)
-print(new.search(5).data)
+new.remove(new.search(2))
+print(new.display())
+
+
