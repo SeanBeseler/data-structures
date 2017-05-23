@@ -1,5 +1,6 @@
 class LinkedList(object):
     def __init__(self, data):
+        """initializes linked list"""
         self.data = None
         self.next_node = None
         self.head = self
@@ -17,6 +18,7 @@ class LinkedList(object):
             self.data = data
 
     def push(self, val):
+        """pushes a value to top of linked list and makes new node the head"""
         current = self.head
         newl = LinkedList(val)
         newl.next_node = current
@@ -24,6 +26,7 @@ class LinkedList(object):
         return self.head
 
     def pop(self):
+        """removes the head of the list and returns the node"""
         current = self.head
         flag = 1
         try:
@@ -35,6 +38,7 @@ class LinkedList(object):
         raise IndexError('linked list is empty')
 
     def size(self):
+        """gets the size of the list"""
         current = self.head
         count = 1
         while current.next_node is not None:
@@ -43,6 +47,7 @@ class LinkedList(object):
         return count
 
     def search(self, val):
+        """finds a specific node by value in the linked list """
         current = self.head
         while current.next_node is not None:
             if current.data == val:
@@ -56,6 +61,7 @@ class LinkedList(object):
         raise Exception('Value does not exist in Linked List')
 
     def remove(self, node):
+        """removes a given node from the linked list"""
         current = self.head
         previouscurrent = None
         if node == current:
@@ -75,6 +81,7 @@ class LinkedList(object):
         raise Exception('Node does not exist in Linked List')
 
     def display(self):
+        """displays the data from linked list as a string"""
         current = self.head
         output = ''
         while current.next_node is not None:
@@ -84,9 +91,11 @@ class LinkedList(object):
         return output
 
     def __len__(self):
+        """returns the length of the linked list"""
         length = self.size()
         return length
 
     def __repr__(self):
+        """prints the data as a string to stdout"""
         output_list = self.head.display()
         return output_list
