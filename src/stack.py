@@ -2,6 +2,7 @@ from linked_list import LinkedList
 
 
 class Stack(object):
+    """Make a new class Stack from using methods from Linked List"""
     def __init__(self, data):
         self.newLinkedList = LinkedList(data)
 
@@ -13,8 +14,3 @@ class Stack(object):
 
     def __len__(self):
         return self.newLinkedList.__len__()
-
-
-st = Stack([1, 2, 3])
-st.push(5)
-print(st.pop())
