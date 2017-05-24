@@ -1,29 +1,29 @@
 import pytest
 
 
+"""Checks the init function is returning expected results"""
 test_stack_init_params_table = [
-    """Checks the init function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 5),
     ('Hello', 'o')
 ]
 
+"""Checks the pop function is returning expected results"""
 test_stack_pop_params_table = [
-    """Checks the pop function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 5),
     ('Hello', 'o')
 ]
 
+"""Checks the push function is returning expected results"""
 test_stack_push_params_table = [
-    """Checks the push function is returning expected results"""
     (4, 4),
     (5, 5),
     ('H', 'H')
 ]
 
+"""Checks the length function is returning expected results"""
 test_stack_length_params_table = [
-    """Checks the length function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 4),
     ('Hello', 5)
