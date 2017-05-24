@@ -1,0 +1,62 @@
+import pytest
+
+
+test_stack_init_params_table = [
+    """Checks the init function is returning expected results"""
+    ([1, 2, 3], 3),
+    ([4, 5, 7, 5], 5),
+    ('Hello', 'o')
+]
+
+test_stack_pop_params_table = [
+    """Checks the pop function is returning expected results"""
+    ([1, 2, 3], 3),
+    ([4, 5, 7, 5], 5),
+    ('Hello', 'o')
+]
+
+test_stack_push_params_table = [
+    """Checks the push function is returning expected results"""
+    (4, 4),
+    (5, 5),
+    ('H', 'H')
+]
+
+test_stack_length_params_table = [
+    """Checks the length function is returning expected results"""
+    ([1, 2, 3], 3),
+    ([4, 5, 7, 5], 4),
+    ('Hello', 5)
+]
+
+
+@pytest.mark.parametrize('val, result', test_stack_pop_params_table)
+def test_pop_function(val, result):
+    """tests the pop function of the class Linked List"""
+    from linked_list import LinkedList
+    new_linked_list = LinkedList(val)
+    assert new_linked_list.pop() == result
+
+
+@pytest.mark.parametrize('val, result', test_stack_push_params_table)
+def test_push_function(val, result):
+    """tests the push function of the class Linked List"""
+    from linked_list import LinkedList
+    new_linked_list = LinkedList([1, 2, 3])
+    assert new_linked_list.push(val).data == result
+
+
+@pytest.mark.parametrize('val, result', test_stack_length_params_table)
+def test_length_function(val, result):
+    """tests the length function of the class Linked List"""
+    from linked_list import LinkedList
+    new_linked_list = LinkedList(val)
+    assert len(new_linked_list) == result
+
+
+@pytest.mark.parametrize('val, result', test_stack_init_params_table)
+def test_init_function(val, result):
+    """tests the init function of the class Linked List"""
+    from linked_list import LinkedList
+    new_linked_list = LinkedList(val)
+    assert new_linked_list.pop() == result
