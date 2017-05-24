@@ -42,6 +42,7 @@ class double_linked_list(object):
         New head is established.
         """
         current = self.head
+        temp_data = None
         try:
             temp_data = current.data
             self.head = current.next_node
@@ -49,6 +50,8 @@ class double_linked_list(object):
             self.size -= 1
             return temp_data
         except AttributeError:
+            if temp_data is not None:
+                return temp_data
             raise IndexError('linked list is empty')
 
     def shift(self):
@@ -57,6 +60,7 @@ class double_linked_list(object):
         New tail is established.
         """
         current = self.tail
+        temp_data = None
         try:
             temp_data = current.data
             self.tail = current.prev_node
@@ -64,6 +68,8 @@ class double_linked_list(object):
             self.size -= 1
             return temp_data
         except AttributeError:
+            if temp_data is not None:
+                return temp_data
             raise IndexError('linked list is empty')
 
     def remove(self, val):
@@ -88,3 +94,7 @@ class double_linked_list(object):
         """returns the length of the double linked list"""
         length = self.size
         return length
+new = double_linked_list()
+new.push('1')
+print(new.pop())
+print(new.pop())
