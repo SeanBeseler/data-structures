@@ -1,65 +1,64 @@
 import pytest
 
-
+"""Checks the pop function is returning expected results"""
 test_check_pop_params_table = [
-    """Checks the pop function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 5),
     ('Hello', 'o')
 ]
 
+"""Checks the push function is returning expected results"""
 test_check_push_params_table = [
-    """Checks the push function is returning expected results"""
     (4, 4),
     (5, 5),
     ('H', 'H')
 ]
 
+"""Checks the size function is returning expected results"""
 test_check_size_params_table = [
-    """Checks the size function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 4),
     ('Hello', 5)
 ]
 
+"""Checks the search function is returning expected results"""
 test_check_search_params_table = [
-    """Checks the search function is returning expected results"""
     ([1, 2, 3], 3, 3),
     ([4, 5, 7, 5], 4, 4),
     ('Hello', 'l', 'l')
 ]
 
+"""Checks the remove function is returning expected results"""
 test_check_remove_params_table = [
-    """Checks the remove function is returning expected results"""
     ([1, 2, 3], 3, '2, 1'),
     ([4, 5, 7, 5], 4, '5, 7, 5'),
     ('Hello', 'l', 'o, l, e, H')
 ]
 
 
+"""Checks the display function is returning expected results"""
 test_check_display_params_table = [
-    """Checks the display function is returning expected results"""
     ([1, 2, 3], '3, 2, 1'),
     ([4, 5, 7, 5], '5, 7, 5, 4'),
     ('Hello', 'o, l, l, e, H')
 ]
 
+"""Checks the print function is returning expected results"""
 test_check_print_params_table = [
-    """Checks the print function is returning expected results"""
     ([1, 2, 3], '3, 2, 1'),
     ([4, 5, 7, 5], '5, 7, 5, 4'),
     ('Hello', 'o, l, l, e, H')
 ]
 
+"""Checks the length function is returning expected results"""
 test_check_length_params_table = [
-    """Checks the length function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 4),
     ('Hello', 5)
 ]
 
+"""Checks the init function is returning expected results"""
 test_check_init_params_table = [
-    """Checks the init function is returning expected results"""
     ([1, 2, 3], 3),
     ([4, 5, 7, 5], 5),
     ('Hello', 'o')
