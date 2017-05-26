@@ -45,11 +45,14 @@ class double_linked_list(object):
         try:
             temp_data = current.data
             self.head = current.next_node
-            self.head.prev_node = None
+            if self.head is not None:
+                self.head.prev_node = None
+            elif temp_data is None:
+                raise IndexError('Linked list is empty')
             self.size -= 1
             return temp_data
         except AttributeError:
-            raise IndexError('linked list is empty')
+            raise IndexError('Linked list is empty')
 
     def shift(self):
         """
@@ -60,7 +63,10 @@ class double_linked_list(object):
         try:
             temp_data = current.data
             self.tail = current.prev_node
-            self.tail.next_node = None
+            if self.tail is not None:
+                self.tail.next_node = None
+            elif temp_data is None:
+                raise IndexError('Linked list is empty')
             self.size -= 1
             return temp_data
         except AttributeError:
