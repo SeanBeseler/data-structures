@@ -1,6 +1,7 @@
 import pytest
 from dll import double_linked_list
 
+
 @pytest.fixture
 def the_fixture():
     """Fixture for dll functionality"""

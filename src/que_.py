@@ -20,7 +20,6 @@ class our_queue(object):
         self.tail = new_qu
         return self.head
 
-
     def dequeue(self):
         """
         Removes the head of the queue and returns the value.
@@ -52,12 +51,7 @@ class our_queue(object):
         except AttributeError:
                 raise IndexError('que is empty')
 
-
     def __len__(self):
         """returns the length of the double linked list"""
         length = self.size
         return length
-temp = our_queue()
-temp.enqueue(4)
-temp.enqueue(3)
-print(len(temp))
