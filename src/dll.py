@@ -53,13 +53,9 @@ class double_linked_list(object):
             self.size -= 1
             return temp_data
         except AttributeError:
-<<<<<<< HEAD
             raise IndexError('Linked list is empty')
-=======
-            if temp_data is not None:
-                return temp_data
-            raise IndexError('linked list is empty')
->>>>>>> 0d0965da03fc58da3b6fe83d558efdb014fd6ea0
+
+
 
     def shift(self):
         """
@@ -104,7 +100,3 @@ class double_linked_list(object):
         """returns the length of the double linked list"""
         length = self.size
         return length
-new = double_linked_list()
-new.push('1')
-print(new.pop())
-print(new.pop())
