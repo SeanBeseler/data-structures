@@ -15,9 +15,11 @@ def test_init_of_binary_heap(bheap):
     assert bheap.size == 0
 
 
-def test_init_with_tuple(bheap):
+def test_init_with_tuple():
     """Test that the binary heap can be initialized with a tuple."""
-    assert bheap(13, 7, 4, 15, 1) == [1, 4, 7, 15, 13]
+    from binaryheap import Binary_heap
+    bheap = Binary_heap([13, 7, 4, 15, 1])
+    assert bheap.list == [1, 4, 7, 15, 13]
 
 
 def test_push_of_binary_heap(bheap):
@@ -27,13 +29,13 @@ def test_push_of_binary_heap(bheap):
     bheap.push(15.6)
     bheap.push(12)
     bheap.push(11)
-    assert bheap == [9, 11, 15.6, 13, 12]
+    assert bheap.list == [9, 11, 15.6, 13, 12]
     bheap.push(4)
-    assert bheap == [4, 11, 9, 15.6, 13, 12]
+    assert bheap.list == [4, 11, 9, 13, 12, 15.6]
     bheap.push(10)
-    assert bheap == [4, 11, 9, 15.6, 13, 12, 10]
+    assert bheap.list == [4, 11, 9, 13, 12, 15.6, 10]
     bheap.push(1)
-    assert bheap == [1, 4, 9, 11, 12, 15.6, 10, 13]
+    assert bheap.list == [1, 4, 9, 11, 12, 15.6, 10, 13]
 
 
 def test_pop_of_binary_heap(bheap):
@@ -45,11 +47,11 @@ def test_pop_of_binary_heap(bheap):
     bheap.push(45)
     bheap.push(2)
     bheap.push(9)
-    assert bheap == [2, 8.2, 9, 12, 45, 15, 16]
+    assert bheap.list == [2, 12, 8.2, 16, 45, 15, 9]
     bheap.pop()
-    assert bheap == [8.2, 12, 9, 16, 45, 15]
+    assert bheap.list == [8.2, 12, 9, 16, 45, 15]
     bheap.pop()
-    assert bheap == [9, 12, 15, 16, 45]
+    assert bheap.list == [9, 12, 15, 16, 45]
 
 
 def test_pop_empty_list_returns_error(bheap):
@@ -68,5 +70,5 @@ def test_get_parent(bheap):
     bheap.push(45)
     bheap.push(2)
     bheap.push(9)
-    assert bheap == [2, 8, 9, 12, 45, 15, 16]
+    assert bheap.list == [2, 12, 8, 16, 45, 15, 9]
     assert bheap._get_parent(4) == 1
