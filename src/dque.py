@@ -1,4 +1,4 @@
-class dque(object):
+class Dque(object):
     def __init__(self):
         self.head = None
         self.tail = None
@@ -63,7 +63,7 @@ class dque(object):
         return self.len
 
 
-n = dque()
+n = Dque()
 n.append(1)
 n.appendleft(2)
 print(n.size())
