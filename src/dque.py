@@ -1,4 +1,5 @@
 class Dque(object):
+    """init the deque object"""
     def __init__(self):
         self.head = None
         self.tail = None
@@ -8,6 +9,7 @@ class Dque(object):
         self.len = 0
 
     def append(self,val):
+        """ append a new value to the tail of the dque"""
         new_dque = dque()
         temp_node = self.tail
         if self.len == 0:
@@ -20,6 +22,7 @@ class Dque(object):
         self.len += 1
         
     def appendleft(self,val):
+        """ appends a new value to the head of the dque"""
         new_dque = dque()
         temp_node = self.head
         if self.len == 0:
@@ -32,6 +35,7 @@ class Dque(object):
         self.len += 1
         
     def pop(self):
+        """ pops the tail"""
         if self.len == 0:
             raise IndexError
         current = self.tail
@@ -41,6 +45,7 @@ class Dque(object):
         return(current.value)
 
     def popleft(self):
+        """pops the head"""
         if self.len == 0:
             raise IndexError
         current = self.head
@@ -50,21 +55,20 @@ class Dque(object):
         return(current.value)
 
     def peek(self):
+        """looks at the value of the tail"""
         if self.len == 0:
             return None
         return self.tail.value
     
     def peekleft(self):
+        """looks at the value of the head""""
         if self.len == 0:
             return None
         return self.head.value
     
     def size(self):
+        """return the size of the dque"""
         return self.len
 
 
-n = Dque()
-n.append(1)
-n.appendleft(2)
-print(n.size())
-        
+    
