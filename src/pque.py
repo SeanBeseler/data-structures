@@ -19,7 +19,7 @@ class Pque(object):
         else:
             current_node = self.head
             pre_node = None
-            for x in range(self.size - 1):
+            for x in range(self.size):
                 if new_pque.priority > current_node.priority:
                     if current_node is self.head:
                         new_pque.next_node = self.head
@@ -27,7 +27,9 @@ class Pque(object):
                         break
                     else:
                         pre_node.next_node = new_pque
-                        new_pque.next_node = current.node
+                        new_pque.next_node = current_node
+                        self.size += 1
+                        new_pque.value = value
                         break
                 if current_node is self.tail:
                     self.tail.next_node = new_pque
@@ -36,13 +38,13 @@ class Pque(object):
                 else:
                     pre_node = current_node
                     current_node = current_node.next_node
-            self.size += 1
-            new_pque.value = value
+        self.size += 1
+        new_pque.value = value
     def peek(self):
         """returns the data in the head of the pque with out removing it"""
         if self.head is None:
             raise IndexError ('que is empty')
-        return slef.head.value
+        return self.head.value
     
     def pop(self):
         """returns the data in the head of pque and removes it """
