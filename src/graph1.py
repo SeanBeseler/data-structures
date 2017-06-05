@@ -5,15 +5,15 @@ class Graph1(object):
         
     def add_node(self,val):
         """adds a node to the graph"""
-        if self.graph.has_key(val):
+        if val in self.graph:
             raise ValueError ('graph all ready has the node')
         self.graph[val] =[]
         
-    def add_edges(self,val1,val2):
+    def add_edge(self,val1,val2):
         """adds edges to the graph"""
-        if not self.graph.has_key(val1):
+        if not val1 in self.graph:
             self.add_node(val1)
-        if not self.graph.has_key(val2):
+        if not  val2 in self.graph:
             self.add_node(val2)
         if val2 in self.graph[val1]:
             self.graph[val1].remove()
@@ -21,7 +21,7 @@ class Graph1(object):
             
     def del_node(self,val):
         """del node from graph and edges that are from or to node"""
-        if self.graph.has_key(val):
+        if val in self.graph:
             del self.graph[val]
             for key in self.graph:
                 if val in self.graph[key]:
@@ -31,7 +31,7 @@ class Graph1(object):
 
     def del_edge(self,val1,val2):
         """del an edge"""
-        if self.graph.has_key(val1) and self.graph.has_key(val2):
+        if not val1 in self.graph and not val2 in self.graph:
             raise ValueError('graph does not have one of the nodes')
         if not val2 in self.graph[val1]:
             raise ValueError('graph does not have edge')
@@ -39,7 +39,7 @@ class Graph1(object):
         
     def has_node(self, val):
         """check to see if graph has node"""
-        if self.graph.has_key(val):
+        if  val in self.graph:
             return True
         return False
 
@@ -49,13 +49,14 @@ class Graph1(object):
         output = []
         for key in self.graph:
             for neigh in self.graph[key]:
+                pair = ()
                 pair = pair + (key , neigh)
                 output.append(pair)
         return output
     
     def adjacent(self, val1 ,val2):
         """check tos see if val1 is adjacent to val2"""
-        if self.graph.has_key[val1] and self.graph.has_key[val2]:
+        if not val1 in self.graph or not val2 in self.graph:
             raise ValueError ('graph does not have one of the nodes')
         if val2 in self.graph[val1]:
             return True
@@ -65,9 +66,8 @@ class Graph1(object):
         """ouputs all neighbors of val"""
         pair = ()
         output = []
-            for neigh in self.graph[key]:
-                pair = pair + (key , neigh)
-                output.append(pair)
+        for neigh in self.graph[val]:
+            output.append(neigh)
         return output
 
     def nodes(self):
@@ -75,10 +75,10 @@ class Graph1(object):
         for key in self.graph:
             output.append(key)
         return output
-            
 
-    
-        
 
-    
-
+new_graph = Graph1()
+new_graph.add_node(1)
+new_graph.add_node(34)
+new_graph.add_node(6)
+print(type(new_graph.nodes()))

@@ -2,25 +2,25 @@
 import pytest
 
 
-@pytest.fixture
-def graph():
+
+def test_init_of_graph1():
     from graph1 import Graph1
     new_graph = Graph1()
-    return new_graph
-
-
-def test_init_of_graph1(graph):
     assert new_graph.graph == {}
 
 
-def test_nodes(graph):
+def test_nodes():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
-    assert new_graph.nodes() == [1, 34, 6]
+    assert list(new_graph.nodes()) == [1, 34, 6]
 
 
-def test_edges(graph):
+def test_edges():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
@@ -30,18 +30,22 @@ def test_edges(graph):
     assert new_graph.edges() == [(1, 6), (1, 34), (34, 6)]
 
 
-def test_add_node(graph):
+def test_add_node():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(5)
-    assert new_graph.nodes == [5]
+    assert new_graph.nodes() == [5]
     new_graph.add_node(56)
-    assert new_graph.nodes == [5, 56]
+    assert 56 in new_graph.nodes()
     new_graph.add_node(12)
-    assert new_graph.nodes == [5, 56, 12]
+    assert 12 in new_graph.nodes()
     new_graph.add_node(34)
-    assert new_graph.nodes == [5, 56, 12, 34]
+    assert 34 in new_graph.nodes()
 
 
-def test_add_edge(graph):
+def test_add_edge():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
@@ -51,20 +55,24 @@ def test_add_edge(graph):
     assert new_graph.edges() == [(1, 6), (1, 34), (34, 6)]
 
 
-def test_delete_node(graph):
+def test_delete_node():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(5)
     new_graph.add_node(56)
     new_graph.add_node(12)
     new_graph.add_node(34)
     new_graph.del_node(5)
-    assert new_graph.nodes == [56, 12, 34]
+    assert 5 not in new_graph.nodes()
     new_graph.del_node(12)
-    assert new_graph.nodes == [56, 34]
+    assert 12 not in new_graph.nodes()
     new_graph.del_node(56)
-    assert new_graph.nodes == [34]
+    assert 56 not in new_graph.nodes()
 
 
-def test_delete_edge(graph):
+def test_delete_edge():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
@@ -77,7 +85,9 @@ def test_delete_edge(graph):
     assert new_graph.edges() == [(1, 34)]
 
 
-def test_has_node(graph):
+def test_has_node():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(5)
     new_graph.add_node(56)
     new_graph.add_node(12)
@@ -87,30 +97,23 @@ def test_has_node(graph):
     assert new_graph.has_node(122) is False
 
 
-def test_has_edge(graph):
+
+def test_neighbors():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
     new_graph.add_edge(1, 6)
     new_graph.add_edge(1, 34)
     new_graph.add_edge(34, 6)
-    assert new_graph.has_edge((1, 6)) is True
-    assert new_graph.has_edge((34, 6)) is True
-    assert new_graph.has_edge((1, 5)) is False
+    assert new_graph.neighbors(1) == [6, 34]
+    assert new_graph.neighbors(34) == [6]
 
 
-def test_neighbors(graph):
-    new_graph.add_node(1)
-    new_graph.add_node(34)
-    new_graph.add_node(6)
-    new_graph.add_edge(1, 6)
-    new_graph.add_edge(1, 34)
-    new_graph.add_edge(34, 6)
-    assert new_graph.neighbors(1) == (6, 34)
-    assert new_graph.neighbors(34) == (6)
-
-
-def test_adjacent(graph):
+def test_adjacent():
+    from graph1 import Graph1
+    new_graph = Graph1()
     new_graph.add_node(1)
     new_graph.add_node(34)
     new_graph.add_node(6)
