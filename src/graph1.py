@@ -91,4 +91,23 @@ class Graph1(object):
                 output = self.depth_first_traversal(neighbors[x], output)
         return output
 
-    # def breadth_first_traversal():
+    def breadth_first_traversal(self, val):
+        output = []
+        done = False
+        if val not in self.graph:
+            raise ValueError('This node is not in the graph')
+        output.append(val)
+        iterator = 0
+        while not done:
+            neighbors = self.graph[val]
+            sample_size = len(output)
+            for x in range(len(neighbors)):
+                if neighbors[x] not in output:
+                    output.append(neighbors[x])
+            if sample_size == len(output):
+                done = True
+            else:
+                iterator+=1
+                val = output[iterator]
+        return output
+                
