@@ -2,7 +2,6 @@
 import pytest
 
 
-
 def test_init_of_graph1():
     from graph1 import Graph1
     new_graph = Graph1()
@@ -97,7 +96,6 @@ def test_has_node():
     assert new_graph.has_node(122) is False
 
 
-
 def test_neighbors():
     from graph1 import Graph1
     new_graph = Graph1()
@@ -124,3 +122,33 @@ def test_adjacent():
     assert new_graph.adjacent(1, 6) is True
     assert new_graph.adjacent(1, 34) is True
     assert new_graph.adjacent(45, 1) is False
+
+
+def test_depth_graph2():
+    from graph1 import Graph1
+    new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+    new_graph.add_edge(1, 2)
+    new_graph.add_edge(1, 3)
+    new_graph.add_edge(2, 4)
+    new_graph.add_edge(2, 5)
+    new_graph.add_edge(3, 6)
+    new_graph.add_edge(3, 7)
+    new_graph.add_edge(4, 8)
+    new_graph.add_edge(4, 9)
+    new_graph.add_edge(5, 10)
+    new_graph.add_edge(5, 11)
+    new_graph.add_edge(6, 12)
+    new_graph.add_edge(6, 13)
+    new_graph.add_edge(7, 14)
+    new_graph.add_edge(7, 15)
+    assert new_graph.depth_first_traversal(1) == [1, 2, 4, 8, 9, 5, 10, 11, 3, 6, 12, 13, 7, 14, 15]
+    assert new_graph.depth_first_traversal(2) == [2, 4, 8, 9, 5, 10, 11]
+    assert new_graph.depth_first_traversal(3) == [3, 6, 12, 13, 7, 14, 15]
+
+
+# def test_breadth_graph2():
+#     from graph1 import Graph1
+#     new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+#     assert new_graph.depth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+#     assert new_graph.depth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11]
+#     assert new_graph.depth_first_traversal(3) == [3, 6, 7, 12, 13, 14, 15]
