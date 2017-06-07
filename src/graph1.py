@@ -58,7 +58,7 @@ class Graph1(object):
         return output
 
     def adjacent(self, val1, val2):
-        """check tos see if val1 is adjacent to val2"""
+        """Check to see if val1 is adjacent to val2"""
         if val1 not in self.graph or val2 not in self.graph:
             raise ValueError('graph does not have one of the nodes')
         if val2 in self.graph[val1]:
@@ -66,19 +66,21 @@ class Graph1(object):
         return False
 
     def neighbors(self, val):
-        """ouputs all neighbors of val"""
+        """Outputs all neighbors of val"""
         output = []
         for neigh in self.graph[val]:
             output.append(neigh)
         return output
 
     def nodes(self):
+        """Returns a list of all nodes in graphs"""
         output = []
         for key in self.graph:
             output.append(key)
         return output
 
     def depth_first_traversal(self, val1, output=[]):
+        """Retrieves nodes ordered by a depth search criteria"""
         if val1 not in self.graph:
             raise ValueError('This node is not in the graph')
         neighbors = self.graph[val1]
@@ -92,6 +94,7 @@ class Graph1(object):
         return output
 
     def breadth_first_traversal(self, val):
+        """Retrieves nodes ordered by a breadth search criteria"""
         output = []
         done = False
         if val not in self.graph:
@@ -107,7 +110,6 @@ class Graph1(object):
             if sample_size == len(output):
                 done = True
             else:
-                iterator+=1
+                iterator += 1
                 val = output[iterator]
         return output
-                

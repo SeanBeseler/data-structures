@@ -3,12 +3,14 @@ import pytest
 
 
 def test_init_of_graph1():
+    """Tests initialization of graph"""
     from graph1 import Graph1
     new_graph = Graph1()
     assert new_graph.graph == {}
 
 
 def test_nodes():
+    """Test for pulling a list of nodes"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -18,6 +20,7 @@ def test_nodes():
 
 
 def test_edges():
+    """Test for pulling list of edges between nodes"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -30,6 +33,7 @@ def test_edges():
 
 
 def test_add_node():
+    """Test for adding nodes to graph"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(5)
@@ -43,6 +47,7 @@ def test_add_node():
 
 
 def test_add_edge():
+    """Test for adding edges between nodes"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -55,6 +60,7 @@ def test_add_edge():
 
 
 def test_delete_node():
+    """Test for deleting nodes"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(5)
@@ -70,6 +76,7 @@ def test_delete_node():
 
 
 def test_delete_edge():
+    """Test for deleting edges between nodes"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -85,6 +92,7 @@ def test_delete_edge():
 
 
 def test_has_node():
+    """Test that a certain node is in the graph"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(5)
@@ -97,6 +105,7 @@ def test_has_node():
 
 
 def test_neighbors():
+    """Test for finding neighbors of a particular node"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -110,6 +119,7 @@ def test_neighbors():
 
 
 def test_adjacent():
+    """Test that there is an edge between two values"""
     from graph1 import Graph1
     new_graph = Graph1()
     new_graph.add_node(1)
@@ -125,6 +135,7 @@ def test_adjacent():
 
 
 def test_depth_graph2():
+    """Test the depth search of graph"""
     from graph1 import Graph1
     new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     new_graph.add_edge(1, 2)
@@ -146,7 +157,8 @@ def test_depth_graph2():
     assert new_graph.depth_first_traversal(3) == [3, 6, 12, 13, 7, 14, 15]
 
 
- def test_breadth_graph2():
+def test_breadth_graph2():
+    """Test the breadth search of a graph"""
     from graph1 import Graph1
     new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
     new_graph.add_edge(1, 2)
@@ -163,6 +175,6 @@ def test_depth_graph2():
     new_graph.add_edge(6, 13)
     new_graph.add_edge(7, 14)
     new_graph.add_edge(7, 15)
-    assert new_graph.depth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    assert new_graph.depth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11]
-    assert new_graph.depth_first_traversal(3) == [3, 6, 7, 12, 13, 14, 15]
+    assert new_graph.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    assert new_graph.breadth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11]
+    assert new_graph.breadth_first_traversal(3) == [3, 6, 7, 12, 13, 14, 15]
