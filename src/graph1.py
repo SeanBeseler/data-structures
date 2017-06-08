@@ -2,9 +2,6 @@ class Graph1(object):
     def __init__(self, itt=0):
         """init the graph object"""
         self.graph = {}
-        if type(itt) in [list, tuple, str]:
-            for x in range(len(itt)):
-                self.add_node(itt[x])
 
     def add_node(self, val):
         """adds a node to the graph"""
@@ -107,7 +104,7 @@ class Graph1(object):
             for x in range(len(neighbors)):
                 if neighbors[x] not in output:
                     output.append(neighbors[x])
-            if sample_size == len(output):
+            if sample_size == len(output) and iterator >= len(output) - 1:
                 done = True
             else:
                 iterator += 1

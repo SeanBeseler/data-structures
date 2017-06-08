@@ -137,7 +137,7 @@ def test_adjacent():
 def test_depth_graph2():
     """Test the depth search of graph"""
     from graph1 import Graph1
-    new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+    new_graph = Graph1()
     new_graph.add_edge(1, 2)
     new_graph.add_edge(1, 3)
     new_graph.add_edge(2, 4)
@@ -160,7 +160,7 @@ def test_depth_graph2():
 def test_breadth_graph2():
     """Test the breadth search of a graph"""
     from graph1 import Graph1
-    new_graph = Graph1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+    new_graph = Graph1()
     new_graph.add_edge(1, 2)
     new_graph.add_edge(1, 3)
     new_graph.add_edge(2, 4)
@@ -175,6 +175,8 @@ def test_breadth_graph2():
     new_graph.add_edge(6, 13)
     new_graph.add_edge(7, 14)
     new_graph.add_edge(7, 15)
-    assert new_graph.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    assert new_graph.breadth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11]
+    new_graph.add_edge(9, 'x')
+    new_graph.add_edge(9, 'y')
+    assert new_graph.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'x', 'y']
+    assert new_graph.breadth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11, 'x', 'y']
     assert new_graph.breadth_first_traversal(3) == [3, 6, 7, 12, 13, 14, 15]
