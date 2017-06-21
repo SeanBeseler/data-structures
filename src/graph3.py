@@ -119,3 +119,67 @@ class Graph3(object):
                 iterator += 1
                 val = output[iterator]
         return output
+
+    def get_short_path(self, start, end, li):
+        """Retrieves shortest path between nodes."""
+        path = []
+        while True:
+            path.append(end)
+            if end is start:
+                break
+            end = li[end][1]
+        return path
+
+    def bellman_ford_helper(self, li, start):
+        """Bellman-Ford helper, iterates through graph."""
+        for key in li:
+            for key2 in self.graph[key]:
+                # import pdb; pdb.set_trace()
+                if li[key2[0]][0] > li[key][0] + key2[1] and key2[0] != start:
+                    new_value = li[key][0] + key2[1]
+                    li[key2[0]] = (new_value, key)
+        return li
+
+    def bellman_ford(self, start, end):
+        """Implementation of Bellman-Ford algorithm."""
+        nodes = self.nodes()
+        li = {}
+        for x in nodes:
+            if x == start:
+                li[x] = (0, x)
+            else:
+                li[x] = (float('inf'), 'nan')
+        temp_li = self.bellman_ford_helper(li, start)
+        while True:
+            if temp_li == li:
+                return self.get_short_path(start, end, li)
+            li = temp_li
+            temp_li = self.bellman_ford_helper(li, start)
+        return self.get_short_path(start, end, li)
+
+    def dijkstra(self, start, end):
+        """Implentation of Dijkstra's algorithm."""
+        nodes = self.nodes()
+        nodes.remove(start)
+        potential_nodes = {}
+        for x in nodes:
+            potential_nodes[x] = (float('inf'), 'nan')
+        li = {}
+        li[start] = (0, start)
+        for x in self.graph[start]:
+            potential_nodes[x[0]] = (x[1], start)
+        while True:
+            if len(potential_nodes) == 0:
+                return self.get_short_path(start, end, li)
+            min_node = float('inf')
+            min_node_name = ''
+            for x in potential_nodes:
+                if potential_nodes[x][0] < min_node:
+                    min_node = potential_nodes[x][0]
+                    min_node_name = x
+            for x in self.graph[min_node_name]:
+                if potential_nodes[x[0]][0] > x[1] + min_node:
+                    potential_nodes[x[0]] = (x[1] + min_node, potential_nodes[x[0]][0])
+            li[min_node_name] = (min_node, start)
+            potential_nodes.remove(min_node_name)
+            start = min_node_name

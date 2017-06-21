@@ -180,3 +180,39 @@ def test_breadth_graph2():
     assert new_graph.breadth_first_traversal(1) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'x', 'y']
     assert new_graph.breadth_first_traversal(2) == [2, 4, 5, 8, 9, 10, 11, 'x', 'y']
     assert new_graph.breadth_first_traversal(3) == [3, 6, 7, 12, 13, 14, 15]
+
+
+def test_bellman_ford():
+    """Test of the Bellman-Ford algorithm"""
+    from graph3 import Graph3
+    new_graph = Graph3()
+    new_graph.add_edge('a', 'b', 5)
+    new_graph.add_edge('a', 'c', 6)
+    new_graph.add_edge('b', 'c', -1)
+    new_graph.add_edge('b', 'e', 1)
+    new_graph.add_edge('c', 'e', 1)
+    new_graph.add_edge('e', 'c', 3)
+    new_graph.add_edge('e', 'f', 5)
+    new_graph.add_edge('f', 'c', 7)
+    assert new_graph.bellman_ford('a', 'b',) == ['b', 'a']
+    assert new_graph.bellman_ford('a', 'c',) == ['c', 'b', 'a']
+    assert new_graph.bellman_ford('a', 'e',) == ['e', 'c', 'b', 'a']
+    assert new_graph.bellman_ford('a', 'f',) == ['f', 'e', 'c', 'b', 'a']
+
+
+def test_dijkstra():
+    """Test of the Dijkstra algorithm"""
+    from graph3 import Graph3
+    new_graph = Graph3()
+    new_graph.add_edge('a', 'b', 5)
+    new_graph.add_edge('a', 'c', 6)
+    new_graph.add_edge('b', 'c', -1)
+    new_graph.add_edge('b', 'e', 1)
+    new_graph.add_edge('c', 'e', 1)
+    new_graph.add_edge('e', 'c', 3)
+    new_graph.add_edge('e', 'f', 5)
+    new_graph.add_edge('f', 'c', 7)
+    assert new_graph.dijkstra('a', 'b',) == ['b', 'a']
+    assert new_graph.dijkstra('a', 'c',) == ['c', 'b', 'a']
+    assert new_graph.dijkstra('a', 'e',) == ['e', 'c', 'b', 'a']
+    assert new_graph.dijkstra('a', 'f',) == ['f', 'e', 'c', 'b', 'a']
