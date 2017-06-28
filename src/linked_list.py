@@ -34,8 +34,7 @@ class LinkedList(object):
             self.head = current.next_node
             return tem_data
         except AttributeError:
-            flag = 0
-        raise IndexError('linked list is empty')
+            raise IndexError('linked list is empty')
 
     def size(self):
         """gets the size of the list"""
