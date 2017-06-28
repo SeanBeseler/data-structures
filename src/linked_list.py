@@ -23,22 +23,21 @@ class LinkedList(object):
         newl = LinkedList(val)
         newl.next_node = current
         self.head = newl
-        return self.head
 
     def pop(self):
         """removes the head of the list and returns the node"""
         current = self.head
-        flag = 1
         try:
             tem_data = current.data
             self.head = current.next_node
             return tem_data
         except AttributeError:
-            flag = 0
-        raise IndexError('linked list is empty')
+            raise IndexError('linked list is empty')
 
     def size(self):
         """gets the size of the list"""
+        if not self.data:
+            return 0
         current = self.head
         count = 1
         while current.next_node is not None:
@@ -62,40 +61,40 @@ class LinkedList(object):
 
     def remove(self, node):
         """removes a given node from the linked list"""
+        flag = 0
         current = self.head
         previouscurrent = None
         if node == current:
             self.head = current.next_node
-            return self.head
+            flag = 1
         while current.next_node is not None:
             if current == node:
                 previouscurrent.next_node = current.next_node
-                return self.head
+                flag = 1
             else:
                 previouscurrent = current
                 current = current.next_node
         if node == current:
             previouscurrent.next_node = None
-            return self.head
-
-        raise Exception('Node does not exist in Linked List')
+            flag = 1
+        if flag = 0:
+            raise ValueError('Node does not exist in Linked List')
 
     def display(self):
         """displays the data from linked list as a string"""
         current = self.head
-        output = ''
+        output = '('
         while current.next_node is not None:
             output += str(current.data) + ', '
             current = current.next_node
-        output += str(current.data)
+        output +=str(current.data)
+        output += ')'
         return output
 
     def __len__(self):
         """returns the length of the linked list"""
-        length = self.size()
-        return length
+        return self.size()
 
     def __repr__(self):
         """prints the data as a string to stdout"""
-        output_list = self.head.display()
-        return output_list
+        return = self.head.display()
